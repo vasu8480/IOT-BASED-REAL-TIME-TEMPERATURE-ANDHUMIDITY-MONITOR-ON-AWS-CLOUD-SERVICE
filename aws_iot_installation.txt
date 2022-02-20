@@ -1,0 +1,24 @@
+apache server installation:
+---------------------------------
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install apache2
+
+directory:
+----------------------------------
+cd /var/www/html
+
+Mqtt install:
+-----------------------------------
+sudo apt-get update
+sudo apt-get install mosquitto mosquitto-clients
+sudo systemctl status mosquitto
+sudo nano /etc/mosquitto/conf.d/default.conf
+
+listener 1883
+
+listener 8033
+protocol websockets
+ctrl+x--->y--> press enter
+sudo systemctl restart mosquitto
+sudo systemctl status mosquitto

@@ -1,0 +1,46 @@
+$temp=$_GET['temp'];
+$hum=$_GET['hum'];
+
+
+
+$servername='52.4.22.143';
+$username='root';
+$password='yourmysqlpassword';
+$database='yourdatabase';
+
+
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password,$database);
+
+
+
+// Check connection
+if (!$conn) {
+die("Connection failed: " . mysqli_connect_error());
+}
+//echo "Connected successfully";
+date_default_timezone_set('Asia/Kolkata');
+$creatat=date('d-m-Y h:i:s');
+
+
+
+$query='INSERT INTO wms (temp,hum,dataupdate) VALUES ("'.$temp.'","'.$hum.'","'.$creatat.'")';
+
+
+
+$result=mysqli_query($conn,$query);
+if ($result) {
+$last_id = mysqli_insert_id($conn);
+echo $last_id;
+} else {
+echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+
+
+mysqli_close($con);
+
+
+
+?>
